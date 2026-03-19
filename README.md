@@ -44,11 +44,35 @@ risk with a probability score shown on a gauge chart.
 
 ## Project Structure
 
-- Data loading and cleaning
-- Exploratory Data Analysis using seaborn and matplotlib
-- Random Forest to identify the most important features
-- Logistic Regression model to predict credit risk
-- Streamlit web app for public use
+### Step 1 — Data Loading
+Loaded real financial data from the German Credit Dataset containing 
+1000 borrowers and their loan details.
+
+### Step 2 — Data Cleaning
+Handled missing values, fixed capitalisation, dropped irrelevant 
+columns and encoded the target column.
+
+### Step 3 — Exploratory Data Analysis
+Used seaborn and matplotlib to visualise patterns in the data across 
+Age, Duration, Credit Amount, Sex and Purpose.
+
+### Step 4 — Random Forest Feature Importance
+Trained a Random Forest model with 100 decision trees to identify 
+which independent variables most influence credit risk decisions.
+
+Key finding — Credit Amount, Age and Duration together accounted 
+for over 54% of the model's predictive power, confirming these are 
+the most influential factors in determining credit risk.
+
+### Step 5 — Logistic Regression
+Trained a Logistic Regression model using the top features identified 
+by Random Forest. Evaluated using accuracy score, classification 
+report and confusion matrix.
+
+### Step 6 — Streamlit Web App
+Built and deployed a live web app where anyone can enter their loan 
+details and instantly receive a credit risk prediction with a 
+probability gauge chart.
 
 ---
 
@@ -70,7 +94,7 @@ risk with a probability score shown on a gauge chart.
 
 ## Insights from the data
 
-- Credit amount was the strongest predictor of credit risk at 0.21 
+- Credit Amount was the strongest predictor of credit risk at 0.21 
   importance score
 - Surprisingly, lower risk borrowers tended to have longer loan 
   durations — suggesting banks approved longer loans for stronger applicants
@@ -93,6 +117,7 @@ risk with a probability score shown on a gauge chart.
 ---
 
 ## How to run locally
+
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
@@ -102,9 +127,9 @@ streamlit run app.py
 
 ## Dataset
 
-German Credit Dataset — sourced from Kaggle
-Original data from UCI Machine Learning Repository
-1000 borrowers, collected in 1990s Germany
+German Credit Dataset — sourced from Kaggle  
+Original data from UCI Machine Learning Repository  
+1000 borrowers, collected in 1990s Germany  
 Credit amounts in Deutsche Marks (DM)
 
 ---
