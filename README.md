@@ -1,4 +1,3 @@
-# Credit-Risk-predictor
 # Credit Risk Predictor
 
 A machine learning project that predicts whether a borrower is a 
@@ -25,6 +24,21 @@ predicts whether a person is a High Risk or Low Risk borrower based on:
 
 The app takes these three inputs and instantly predicts the credit 
 risk with a probability score shown on a gauge chart.
+
+---
+
+## Files in this repository
+
+| File | Description |
+|---|---|
+| `app.py` | Streamlit web app |
+| `requirements.txt` | Python packages needed |
+| `credit_risk_project.ipynb` | Full analysis notebook |
+| `README.md` | Project documentation |
+| `age_vs_risk.png` | EDA chart |
+| `duration_vs_risk.png` | EDA chart |
+| `credit_amount_vs_risk.png` | EDA chart |
+| `feature_importance.png` | Random Forest feature importance chart |
 
 ---
 
@@ -103,3 +117,11 @@ Credit amounts in Deutsche Marks (DM)
 - Note: Accuracy is modest because only 3 features are used.
   The model demonstrates that these three variables alone carry 
   significant predictive power for credit risk.
+
+---
+
+## Note
+
+The Streamlit app uses Credit Amount, Age and Duration together 
+for predictions. The Colab notebook demonstrates Logistic Regression 
+using Credit Amount alone as a simplified educational example.
