@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import os
 import kagglehub
+import plotly.graph_objects as go
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
@@ -35,6 +36,33 @@ def load_and_train():
     accuracy = accuracy_score(y_test, model.predict(X_test))
 
     return model, accuracy
+
+# ============================================================
+# GAUGE CHART FUNCTION
+# ============================================================
+
+def show_gauge(probability):
+    fig = go.Figure(go.Indicator(
+        mode="gauge+number",
+        value=probability * 100,
+        number={'suffix': '%'},
+        gauge={
+            'axis': {'range': [0, 100]},
+            'bar': {'color': 'red' if probability > 0.5 else 'green'},
+            'steps': [
+                {'range': [0, 40], 'color': '#d5f5e3'},
+                {'range': [40, 60], 'color': '#fdebd0'},
+                {'range': [60, 100], 'color': '#fadbd8'}
+            ],
+        },
+        title={'text': 'Probability of Default'}
+    ))
+    fig.update_layout(height=300)
+    st.plotly_chart(fig, use_container_width=True)
+
+# ============================================================
+# LOAD MODEL
+# ============================================================
 
 model, accuracy = load_and_train()
 
@@ -91,6 +119,10 @@ if st.button('Predict My Risk', use_container_width=True):
 
     st.divider()
 
+    # Gauge chart
+    show_gauge(probability)
+
+    # Result
     if prediction == 1:
         st.error(f'High Risk — {probability:.0%} probability of default')
         st.write('Based on your details, the model predicts you are a **high risk** borrower.')
@@ -112,24 +144,5 @@ if st.button('Predict My Risk', use_container_width=True):
 st.divider()
 st.caption('Built by Hari Prasaad — Year 1 CS Student | Trained on German Credit Dataset | Model: Logistic Regression')
 
-import plotly.graph_objects as go
 
-def show_gauge(probability):
-    fig = go.Figure(go.Indicator(
-        mode="gauge+number",
-        value=probability * 100,
-        number={'suffix': '%'},
-        gauge={
-            'axis': {'range': [0, 100]},
-            'bar': {'color': 'red' if probability > 0.5 else 'green'},
-            'steps': [
-                {'range': [0, 40], 'color': '#d5f5e3'},
-                {'range': [40, 60], 'color': '#fdebd0'},
-                {'range': [60, 100], 'color': '#fadbd8'}
-            ],
-        },
-        title={'text': 'Probability of Default'}
-    ))
-    fig.update_layout(height=300)
-    st.plotly_chart(fig, use_container_width=True)
 
