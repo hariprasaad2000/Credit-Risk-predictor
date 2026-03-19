@@ -9,7 +9,7 @@ Built by Hari Prasaad — Year 1 Computer Science Student
 
 ## Live App
 
-Try it here → [Credit Risk Predictor](YOUR_STREAMLIT_LINK_HERE)
+Try it here → [Credit Risk Predictor](https://credit-risk-predictor-3tnappcspgl6kfrqfxrm9qq.streamlit.app/)
 
 ---
 
