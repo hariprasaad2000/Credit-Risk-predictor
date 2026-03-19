@@ -111,3 +111,25 @@ if st.button('Predict My Risk', use_container_width=True):
 
 st.divider()
 st.caption('Built by Hari Prasaad — Year 1 CS Student | Trained on German Credit Dataset | Model: Logistic Regression')
+
+import plotly.graph_objects as go
+
+def show_gauge(probability):
+    fig = go.Figure(go.Indicator(
+        mode="gauge+number",
+        value=probability * 100,
+        number={'suffix': '%'},
+        gauge={
+            'axis': {'range': [0, 100]},
+            'bar': {'color': 'red' if probability > 0.5 else 'green'},
+            'steps': [
+                {'range': [0, 40], 'color': '#d5f5e3'},
+                {'range': [40, 60], 'color': '#fdebd0'},
+                {'range': [60, 100], 'color': '#fadbd8'}
+            ],
+        },
+        title={'text': 'Probability of Default'}
+    ))
+    fig.update_layout(height=300)
+    st.plotly_chart(fig, use_container_width=True)
+
